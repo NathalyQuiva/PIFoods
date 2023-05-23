@@ -9,7 +9,7 @@ const Detail =()=>{
     const [recipe,setRecipe]= useState ([])
 
     useEffect(() => {
-        axios(`https://api.spoonacular.com/recipes/${id}/information?apiKey=56926b30da644d699d13c4a29e81df1a`)
+        axios(`https://api.spoonacular.com/recipes/${id}/information?apiKey=eb1c78805454480a8ccba404ee8fb25a`)
         .then(response => response.data)
         
         .then((data) => {
