@@ -1,0 +1,66 @@
+.container{
+    min-height: 100vh;
+
+    background:linear-gradient(rgba(146, 151, 165, 0.5), rgba(5,7,12,0.5)), 
+    url(https://media.licdn.com/dms/image/C4D12AQGtkxC55acTJw/article-inline_image-shrink_1500_2232/0/1647946567737?e=1689206400&v=beta&t=0LP4cKQrEgfsR_Jd3pQf9juxwvJPw84yU8Z8oBM7OqY) no-repeat center center fixed; 
+    background-size: cover;
+    text-decoration: none;
+    
+}
+
+.boton{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+   width: 1350px;
+    height: 40px;
+   
+    color: rgb(253, 249, 247);
+    font-size: 20px;
+    font-weight: 500;
+    background-color: rgba(3, 10, 10, 0.267);
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: .3s ease all;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.boton span{
+    transition: .5s ease-in-out;
+    position: absolute;
+    left: 46%;
+
+
+}
+
+
+
+.boton .icono{
+display: flex;
+    align-items: center;
+    position: absolute;
+    z-index: 2;
+    left: -40px;
+    transition: .8s ease-in-out all;
+    opacity: -70;
+
+}
+
+.boton svg{
+    color: beige;
+    width: 35px;
+    height: 35px;
+}
+
+
+.boton:hover .icono{
+    left: calc(100% - 50px);
+    opacity: 0.7;
+}
+
+.boton:hover span {
+    left: 80px;
+
+}

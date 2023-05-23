@@ -6,7 +6,7 @@ export const POST_RECIPE= "POST_RECIPE"
 
 export const getRecipes=()=>{
     return async function (dispatch) {
-        const apiData= await axios.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=16e32c6bda9442048aefad32a34fbd3b&addRecipeInformation=true&number=100");
+        const apiData= await axios.get("https://api.spoonacular.com/recipes/complexSearch?apiKey=56926b30da644d699d13c4a29e81df1a&addRecipeInformation=true&number=100");
 
         const recipes =apiData.data.results;
 

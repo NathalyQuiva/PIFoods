@@ -1,16 +1,15 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState } from "react";
 export const POST_RECIPE= "POST_RECIPE"
 //import {createRecipe } from "../../redux/actions"
 const Form =()=>{
-    const dispatch= useDispatch();
+    
     //useEffect(()=>{
         //dispatch(createRecipe(form))
 //},[form])
 
     const [form, setForm] =useState({
-        id:"",
+        id: "",
         title:"",
         image:"",
         summary:"",
@@ -23,18 +22,16 @@ const Form =()=>{
 const [errors, setErrors]=useState({});
 
 const handleChange = (event) => {
-     setErrors(validation({
-        ...form,
-        [event.target.name]: event.target.value
-    }))
-    
     setForm({
         ...form,
         [event.target.name]: event.target.value
     })
-
-
-   
+    
+    setErrors(validation({
+        ...form,
+        [event.target.name]: event.target.value
+    }))
+    console.log(form)
 }
 
 const validation =(form) =>{
@@ -73,10 +70,10 @@ const validation =(form) =>{
     return errors;
 };
 
-const handleSubmit = (event) => {
+const handleSubmit = async (event) => {
     event.preventDefault()
-    
-    axios.post("http://localhost:3003/recipes",form)
+  
+    console.log(await axios.post("http://localhost:3003/recipes",form))
     .then(res=>alert(res))
     //login(form);
 }
@@ -84,45 +81,60 @@ const handleSubmit = (event) => {
  
     return (
         <form >
-            
-        <label htmlFor="text">Id: </label>
-        <input type = "text" name="id" value ={form.id} onChange={handleChange}/>
+        <div>
+        <label htmlFor="id">Id: </label>
+        <input id="id" type = "text" name="id" value ={form.id} onChange={handleChange}/>
         {errors.id && <p>{errors.id}</p>} 
-        <hr/>
+        </div>
 
-        <label htmlFor="text">Title: </label>
-        <input type = "text" name="title" value ={form.title} onChange={handleChange}/>
+        <p/>
+
+        <div>
+        <label htmlFor = "title">Title: </label>
+        <input id ="title"  type = "text" name="title" value ={form.title} onChange={handleChange}/>
         {errors.title && <p>{errors.title}</p>} 
-        <hr/>
-
-        <label htmlFor="text">Image: </label>
-        <input type = "text"  name="image" value={form.image}  onChange={handleChange}/> 
-        {errors.image && <p>{errors.image}</p>} 
-        <hr/>
-
-        <label htmlFor="text">Summary: </label>
-        <input type = "text"  name="summary" value={form.summary}  onChange={handleChange}/> 
-        {errors.summary && <p>{errors.summary}</p>} 
-        <hr/>
-
-        <label htmlFor="text">Health Score: </label>
-        <input type = "text"  name="healthScore" value={form.healthScore}  onChange={handleChange}/> 
-        {errors.healthScore && <p>{errors.healthScore}</p>} 
-        <hr/>
-
-
-        <label htmlFor="text">Steps: </label>
-        <input type = "text"  name="steps" value={form.steps}  onChange={handleChange}/> 
-        {errors.steps && <p>{errors.steps}</p>} 
-        <hr/>
-
+        </div>
         
-        <label htmlFor="text">Diets: </label>
-        <input type = "text"  name="diets" value={form.diets}  onChange={handleChange}/> 
-        {errors.diets && <p>{errors.diets}</p>} 
-        <hr/>
+        <p/>
 
-        <button onSubmit={handleSubmit}  >Submit</button>
+        <div>
+        <label htmlFor="image">Image: </label>
+        <input id="image" type = "text"  name="image" value={form.image}  onChange={handleChange}/> 
+        {errors.image && <p>{errors.image}</p>} 
+        </div>
+        <p/>
+
+
+        <div>
+        <label htmlFor="summary">Summary: </label>
+        <input id="summary" type = "text"  name="summary" value={form.summary}  onChange={handleChange}/> 
+        {errors.summary && <p>{errors.summary}</p>} 
+        </div>
+        <p/>
+
+
+        <div>
+        <label  htmlFor="healthScore">Health Score: </label>
+        <input id="healthScore"  type = "text"  name="healthScore" value={form.healthScore}  onChange={handleChange}/> 
+        {errors.healthScore && <p>{errors.healthScore}</p>} 
+        </div>
+        <p/>
+
+        <div>
+        <label htmlFor="steps" >Steps: </label>
+        <input id="steps"  type = "text"  name="steps" value={form.steps}  onChange={handleChange}/> 
+        {errors.steps && <p>{errors.steps}</p>} 
+        </div>
+        <p/>
+
+        <div>
+        <label htmlFor="diets" >Diets: </label>
+        <input id="diets" type = "text"  name="diets" value={form.diets}  onChange={handleChange}/> 
+        {errors.diets && <p>{errors.diets}</p>} 
+        </div>
+        <p/>
+
+        <button onSubmit={handleSubmit}  >Create Recipe</button>
 
         </form>
     )
